@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>marimo WebAssembly + GitHub Pages Template</title>
+  <title>Python for Chemists workshops</title>
+  <link rel="icon" type="image/x-icon" href="https://github.com/szczypinski-group/python-for-chemists/blob/main/public/favicon.svg">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -24,8 +25,8 @@
       margin-bottom: 20px;
     }
     .logo {
-      width: 80px;
-      height: auto;
+      height: 80px;
+      width: auto;
       margin-bottom: 10px;
     }
     h1 {
@@ -89,17 +90,17 @@
 <body class="font-sans max-w-2xl mx-auto p-8 leading-relaxed">    
     <header>
       <div class="container">
-        <img src="https://raw.githubusercontent.com/marimo-team/marimo/main/docs/_static/marimo-logotype-thick.svg" alt="marimo Logo" class="logo">
-        <h1>marimo WebAssembly + GitHub Pages Template</h1>
-        <p class="subtitle">Interactive Python notebooks exported to WebAssembly and deployed to GitHub Pages</p>
+	<img src="https://www.durham.ac.uk/media/durham-university/site-assets/image/logo-dark.svg" alt="Durham logo" class="logo">
+        <h1>Python for Chemistry</h1>
+        <p class="subtitle">Interactive Python notebooks for introductory workshops</p>
       </div>
     </header>
 
     <main class="container">
 
     {% if notebooks %}
-    <h2 class="section-title">Notebooks</h2>
-    <p>Interactive notebooks in edit mode - you can modify and experiment with the code</p>
+    <h2 class="section-title">Workshop notebooks</h2>
+    <p>Interactive notebooks in edit mode - you can modify and experiment with the code. Note that these <b>live in your browser</b> so make sure to save the outputs somewhere on your computer if you want to keep them!</p>
     <div class="cards">
       {% for notebook in notebooks %}
       <!-- {{ notebook.display_name }} Notebook -->
@@ -128,17 +129,24 @@
       {% endfor %}
     </div>
     {% endif %}
+
+    <h2 class="section-title">Note on notebooks</h2>
+    <p> Python notebooks are often taught to beginners who want to learn coding. Perhaps the most common ones are <a href="https://jupyter.org/" target="_blank">Jupyter Notebooks</a>. In this course, we use <a href="https://marimo.io" target="_blank">marimo</a> for two main reasons: (1) they use reactive execution, meaning there is no hidden state if you execute them in "wrong" order; (2) they are simple Python files, making them better suited for version control with <a href="https://github.com/marimo-team/marimo" target="_blank">GitHub</a>. There are ways of fixing those issues with Jupyter and you are more than welcome to experiment with other platforms in your spare time.</p>
+    <p> For these workshop we use Web Assembly (WASM) technology - meaning that the notebooks run in your local browser. If you clear cookies/cache, you will lose the work. For real-world application (including lab reports), I would recommend <a href="https://docs.marimo.io/getting_started/installation/#__tabbed_1_2" target="_blank">installing marimo with uv</a>. For more advanced tasks, like using the popular cheminformatics package <a href="https://www.rdkit.org/docs/index.html" target="_blank">RDKit</a> you would need a local installation too, as they do not work with WASM.</p>
+
+    <h2 class="section-title">Acknowledgements</h2>
+    <p> Some of the content is inspired or borrowed from excellent external resources, mainly <a href="https://weisscharlesj.github.io/SciCompforChemists/notebooks/introduction/intro.html" target="_blank">Scientific Computing for Chemist with Python</a> and <a href="https://github.com/Edinburgh-Chemistry-Teaching/Data-driven-chemistry/" target="_blank">Data-driven Chemistry at the University of Edinburgh</a>. Please have a look at their websites for more examples, they are all excellent! </p>
   </main>
 
     <footer>
       <div class="container">
-        <p>Built with <a href="https://marimo.io" target="_blank">marimo</a> - Interactive Python notebooks</p>
+        <p>Built with <a href="https://marimo.io" target="_blank">marimo</a> - interactive Python notebooks.</p>
         <div class="footer-links">
-          <a href="https://github.com/marimo-team/marimo" target="_blank">GitHub</a>
-          <a href="https://docs.marimo.io" target="_blank">Documentation</a>
-          <a href="https://discord.gg/JE7nhX6mD8" target="_blank">Discord</a>
+          <a href="https://github.com/marimo-team/marimo" target="_blank">Marimo GitHub</a>
+          <a href="https://docs.marimo.io" target="_blank">Marimo Documentation</a>
+	  <a href="https://github.com/szczypinski-group/python-for-chemists" target="_blank">Project GitHub</a>
         </div>
-        <p>Licensed under <a href="https://github.com/marimo-team/marimo/blob/main/LICENSE" target="_blank">Apache License 2.0</a></p>
+	<p>Code licensed under <a href="https://github.com/marimo-team/marimo/blob/main/LICENSE" target="_blank">Apache License 2.0</a>. Content licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en" target="_blank">Creating Commons BY-SA 4.0<a/>.</p>
       </div>
     </footer>
 
