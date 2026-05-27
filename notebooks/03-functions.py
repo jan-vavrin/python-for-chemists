@@ -95,7 +95,7 @@ def _():
 
 
 @app.cell
-def _(body_temp):
+def _():
     # Running this cell should display:
     # Body temperature in Kelvin is 309.75 K.
     # dG at 18 C is -5574.002 J K-1 mol-1.
@@ -110,8 +110,28 @@ def _(body_temp):
         dG = - 8.314472 * from_celsius1(temp) * math.log(k_eq)
         return dG
 
-    print(f"Body temperature in Kelvin is {from_celsius1(body_temp)} K.")
-    print(f"dG at 18 C is {gibbs(10, 18):.3f} J K-1 mol-1.")
+    return from_celsius1, gibbs
+
+
+@app.cell(hide_code=True)
+def _(body_temp, from_celsius1, gibbs):
+    exercise_1_passed = False
+
+    try:
+        test_c = from_celsius1(body_temp) == 309.75
+        test_g = abs(gibbs(10, 18) - (-5574.00)) < 1.0
+
+        exercise_1_passed = test_c and test_g
+
+    except Exception:
+        exercise_1_passed = False
+
+    if exercise_1_passed:
+        feedback = mo.callout("✅ Correct!", kind="success")
+    else:
+        feedback = mo.callout("❌ Not quite.", kind="danger")
+
+    feedback
     return
 
 
