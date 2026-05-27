@@ -25,7 +25,7 @@ def _():
 
     They can be a mix of _Python cells_ and _Markdown cells_. Python cells contain code that can be run inside the notebook with any output of the code (values, text, plots) appearing directly below.
 
-    Markdown cells (like this one) are used to help to convey information. They support formatting in [Markdown](https://www.markdownguide.org/basic-syntax/), as well as some LaTeX:
+    Markdown cells (like this one) are used to help to convey information. They are not executed and support formatting in [Markdown](https://www.markdownguide.org/basic-syntax/), as well as some [LaTeX](https://en.wikibooks.org/wiki/LaTeX/Basics):
 
     \[
             f(x) = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \ldots.
@@ -37,13 +37,8 @@ def _():
 
     ## Explore
 
-    To see the Markdown code used to generate this cell, click on the three dots and select "Show code" (or click `Ctrl + H` with the cell highligted). You can also double-click on the text to edit the Markdown code, and click `Esc` when you are done. To add a new cell, click on the small `+` signes to the left. To execute and move to the next cell, press `Shift + Enter`.
+    To see the Markdown code used to generate this cell, click on the three dots and select "Show code" (or click `Ctrl + H` with the cell highligted). You can also double-click on the text. To add a new cell, click on the small `+` signes to the left. To execute and move to the next cell, press `Shift + Enter`.
     """)
-    return
-
-
-@app.cell
-def _():
     return
 
 
