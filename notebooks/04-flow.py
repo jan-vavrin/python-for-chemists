@@ -4,6 +4,7 @@
 #     "marimo",
 # ]
 # ///
+
 import marimo
 
 __generated_with = "0.23.8"
@@ -255,7 +256,7 @@ app._unparsable_cell(
         half_lives: int,    
     ) -> float:
         \"\"\"Get mass of uranium after given number of half-lives.
-    
+
         Arguments
         ---------
         initial_mass
@@ -267,9 +268,9 @@ app._unparsable_cell(
         Returns
         -------
         Mass of the sample after half_lives half-lives.
-    
+
         \"\"\"
-    
+
         mass = initial_mass
         for x in range(half_lives):
             mass =  # COMPLETE HERE
@@ -317,6 +318,79 @@ def _():
 def _():
     for a in range(3, 43, 4):
         print(f"Weird element from the range: {a}.")
+    return
+
+
+@app.cell(hide_code=True)
+def _():
+    mo.md(r"""
+    ### Nested loops
+
+    As en exercise, let's try to implement the famous _bubble sort_ algorithm. It's visualised here in a video as a [Hungarian folk dance](https://www.youtube.com/watch?v=lyZQPjUT5B4). When thinking about algorithms, it's very useful to write out some psuedocode that expains what it would do. It is also common to visualise them with diagrams, a nice online tool for that is [draw.io](https://www.drawio.com/). Designing what your code will do is the **critical step** - implementing it in Python is usually the easy bit. There are lots of tools and articles online that help you implement what you have in mind - but you need to learn the basics to **know what questions to ask**!
+
+    Pseudocode for bubble sort could look something like this:
+
+    ```
+    Get the Total_Length of the list
+
+    For each Pass from 1 to Total_Length:
+        For each Item_Index from 0 to (Total_Length - Pass):
+
+            Look at Current_Value and the Next_Value
+
+            IF Current_Value is GREATER THAN Next_Value:
+                Swap their positions
+
+            ELSE:
+                Leave them alone and move to the next pair
+    ```
+    """)
+    return
+
+
+app._unparsable_cell(
+    r"""
+    # Unsorted atomic masses: He, Ne, Ar, Kr, Xe
+    masses = [39.948, 20.180, 131.293, 4.0026, 83.798]
+
+    def sort_masses(mass_list):
+        # How many times do we need to loop
+        n = # COMPLETE HERE
+
+        for i in range(n):
+            for j in # COMPLETE HERE
+                # --- YOUR CODE HERE ---
+                # 1. Compare masses[j] and masses[j+1]
+                # 2. If the left one is greater than the right one, swap them
+            # Now i last elements mass_list[:-i] should be sorted
+            # Now all of mass_list is sorted
+        
+        return mass_list
+
+    masses = sort_masses(masses)
+    """,
+    name="_"
+)
+
+
+@app.cell(hide_code=True)
+def _(masses):
+    # The correct order
+    expected = [4.0026, 20.18, 39.948, 83.798, 131.293]
+    sort_passed = False
+    
+    try:
+        sort_passed = (masses == expected)
+
+    except Exception:
+        sort_passed = False
+    
+    if sort_passed:
+        sort_feedback = mo.callout("✅ Correct! The noble gases are now ordered by mass.", kind="success")
+    else:
+        sort_feedback = mo.callout("❌ Not quite.", kind="danger")
+
+    sort_feedback
     return
 
 
@@ -459,7 +533,7 @@ def _():
         except ZeroDivisionError:
             print("DIVISION: ZeroDivisionError - keep the numerator.")
             return num
-        
+
     def error_example(numerator):
         denominators = [1, 2, 3, 4, "5", 6, 0, "NA"]
         for x in denominators:
@@ -520,7 +594,7 @@ def _():
 
     try:
         calculate_pressure(20, -5, 10)
-    
+
     except Exception as e:
         print(f"Error encountered: {e}")
     return
