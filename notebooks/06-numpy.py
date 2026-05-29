@@ -1,3 +1,10 @@
+# /// script
+# requires-python = ">=3.14"
+# dependencies = [
+#     "marimo",
+# ]
+# ///
+
 import marimo
 
 __generated_with = "0.23.8"
@@ -14,7 +21,9 @@ def _():
 
     ## Numerical Python (NumPy)
 
-    In this workshop we will learn the basics of [NumPy](https://numpy.org/). So far we have been performing some mathematical operations and using lists - but NumPy is much more efficient at these tasks. It introduces n-dimensional arrays (`ndarray`), has better numerical accuracy, is faster, and automates a lot of array-based operations that would otherwise require lots of `for` loops.
+    In this workshop we will learn the basics of [NumPy](https://numpy.org/). There aren't really any exercises here, it's more a selection of examples that I wish someone showed me earlier in my life. Remember that you can play around and explore different parameters in the notebook - you can just restart it if you break too much! You can also hover over methods with your mouse to get the docstrings (`numpy` and `scipy` are very thorough) or use `help(function)`. I have also included links to the documentation throughout. We will have a real exercise in another workshop!
+
+    So far we have been performing some mathematical operations and using lists - but NumPy is much more efficient at these tasks. It introduces n-dimensional arrays (`ndarray`), has better numerical accuracy, is faster, and automates a lot of array-based operations that would otherwise require lots of `for` loops.
 
     To use NumPy we need to import it, and the convention is to do it using the `np` alias.
     """)
@@ -502,16 +511,16 @@ def _():
 def _(np):
     def generate_kinetics():
         t_data = np.linspace(0, 10, 30)
-    
+
         A0_true = 1.0  
         k_true = 0.45 
-    
+
         rng = np.random.default_rng(seed=42)
         noise = rng.normal(0, 0.03, size=t_data.size)
-    
+
         # [A] = [A]0 * exp(-kt)
         abs_data = A0_true * np.exp(-k_true * t_data) + noise
-    
+
         return t_data, abs_data
 
     time_data, example_kinetics_data = generate_kinetics()
@@ -592,18 +601,18 @@ def _():
 def _(np):
     def generate_chromatography():
         time_trace = np.linspace(0, 5, 1000)
-    
+
         center = 3.5
         width = 0.1
         height = 1.2
         peak = height * np.exp(- (time_trace - center)**2 / (2 * width**2))
-    
+
         rng = np.random.default_rng(seed=123)
         baseline_drift = 0.01 * time_trace  # The signal slowly climbs
         noise = rng.normal(0, 0.02, size=time_trace.size)
 
         intensity_trace = peak + baseline_drift + noise
-    
+
         return time_trace, intensity_trace
 
     hplc_time, hplc_trace = generate_chromatography()
@@ -638,7 +647,6 @@ def _(hplc_time, hplc_trace):
 
     left_time = hplc_time[lhs]
     right_time = hplc_time[rhs]
-
     return left_time, lhs, peak_height, peak_time, rhs, right_time
 
 
@@ -675,7 +683,7 @@ def _():
     mo.md(r"""
     ### Integration
 
-    The `scipy.integrate` module provides several ways for numerical integration Let's continue with our example and integrate between the identified left- and right-hand side of the HPLC peak.
+    The [`scipy.integrate`](https://docs.scipy.org/doc/scipy/reference/integrate.html) module provides several ways for numerical integration Let's continue with our example and integrate between the identified left- and right-hand side of the HPLC peak.
     """)
     return
 
