@@ -116,6 +116,26 @@ def _(first_name, year):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
+    ## Mathematical operators
+
+    In the most basic way, Python can be used as a simple calculator. For more advanced operations (or more efficient ways to perform operations on precise floating-point variables) such as matrix multiplication, we use the `numpy` library covered later.
+
+    | Operator | Name                  | Example  | Result         |
+    | -------- | --------------------- | -------- | -------------- |
+    | `+`      | Addition              | `3 + 2`  | `5`            |
+    | `-`      | Subtraction           | `3 - 2`  | `1`            |
+    | `*`      | Multiplication        | `3 * 2`  | `6`            |
+    | `/`      | True division         | `3 / 2`  | `1.5`          |
+    | `//`     | Floor division        | `3 // 2` | `1`            |
+    | `%`      | Modulo (remainder)    | `3 % 2`  | `1`            |
+    | `**`     | Exponentiation        | `3 ** 2` | `9`            |
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
     ## Common variable types
 
     > If it looks like a duck and quacks like a duck, it's a duck.
