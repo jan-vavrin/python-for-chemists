@@ -311,7 +311,7 @@ def from_celsius_final(
 @app.cell(hide_code=True)
 def _():
     mo.md(r"""
-    While it might feel completely unnecessary, starting your function definition with docstrings and explicit types, helps you structure your thoughts and makes coding much easier down the line.
+    While it might feel completely unnecessary, starting your function definition with docstrings and explicit types helps you structure your thoughts and makes coding much easier down the line.
     """)
     return
 
