@@ -179,20 +179,21 @@ app._unparsable_cell(
 
 @app.cell(hide_code=True)
 def _(check_blue, prussian_blue):
-    exercise_1_passed = False
-
-    try:
-        exercise_1_passed = check_blue(prussian_blue) == "Iron is in Prussian blue."
-
-    except Exception:
+    def str_check_pass():
         exercise_1_passed = False
+    
+        try:
+            exercise_1_passed = check_blue(prussian_blue) == "Iron is in Prussian blue."
 
-    if exercise_1_passed:
-        feedback = mo.callout("✅ Correct!", kind="success")
-    else:
-        feedback = mo.callout("❌ Not quite.", kind="danger")
+            if exercise_1_passed:
+                return mo.callout("✅ Correct!", kind="success")
+            else:
+                return mo.callout("❌ Not quite.", kind="danger")
+    
+        except Exception as e:
+            return mo.callout(f"❌ Python error: {e}", kind="danger")
 
-    feedback
+    str_check_pass()
     return
 
 
@@ -283,20 +284,20 @@ app._unparsable_cell(
 
 @app.cell(hide_code=True)
 def _(uranium_left, uranium_sample):
-    uranium_passed = False
-
-    try:
-        uranium_passed = abs(uranium_left(uranium_sample, 6) - 3.990625) < 0.1
-
-    except Exception:
+    def uranium_pass():
         uranium_passed = False
 
-    if uranium_passed:
-        uranium_feedback = mo.callout("✅ Correct!", kind="success")
-    else:
-        uranium_feedback = mo.callout("❌ Not quite.", kind="danger")
-
-    uranium_feedback
+        try:
+            uranium_passed = abs(uranium_left(uranium_sample, 6) - 3.990625) < 0.1
+            if uranium_passed:
+                return mo.callout("✅ Correct!", kind="success")
+            else:
+                return mo.callout("❌ Not quite.", kind="danger")
+    
+        except Exception as e:
+            return mo.callout(f"❌ Python error: {e}", kind="danger")
+    
+    uranium_pass()
     return
 
 
@@ -364,7 +365,7 @@ app._unparsable_cell(
                 # 2. If the left one is greater than the right one, swap them
             # Now i last elements mass_list[:-i] should be sorted
             # Now all of mass_list is sorted
-        
+
         return mass_list
 
     masses = sort_masses(masses)
@@ -376,21 +377,21 @@ app._unparsable_cell(
 @app.cell(hide_code=True)
 def _(masses):
     # The correct order
-    expected = [4.0026, 20.18, 39.948, 83.798, 131.293]
-    sort_passed = False
-    
-    try:
-        sort_passed = (masses == expected)
-
-    except Exception:
+    def sort_feedback():
+        expected = [4.0026, 20.18, 39.948, 83.798, 131.293]
         sort_passed = False
     
-    if sort_passed:
-        sort_feedback = mo.callout("✅ Correct! The noble gases are now ordered by mass.", kind="success")
-    else:
-        sort_feedback = mo.callout("❌ Not quite.", kind="danger")
+        try:
+            sort_passed = (masses == expected)
+            if sort_passed:
+                return mo.callout("✅ Correct! The noble gases are now ordered by mass.", kind="success")
+            else:
+                return mo.callout("❌ Not quite.", kind="danger")
+    
+        except Exception as e:
+            return mo.callout(f"❌ Python error: {e}", kind="danger")
 
-    sort_feedback
+    sort_feedback()
     return
 
 

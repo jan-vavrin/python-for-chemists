@@ -266,31 +266,31 @@ def _(np):
 
 @app.cell(hide_code=True)
 def _(kinetics_array, np):
-    genfromtxt_pass = False
-    genfromtxt_result = np.array(([[0.   , 0.   , 0.01 ],
-           [1.   , 0.15 , 0.011],
-           [2.   , 0.28 , 0.009],
-           [3.   ,   np.nan, 0.01 ],
-           [4.   , 0.48 , 0.012],
-           [5.   , 0.55 , 0.011]])
-    )
-
-    try:
-        genfromtxt_pass = np.allclose(
-            kinetics_array(),
-            genfromtxt_result,
-            equal_nan=True
-        )
-
-    except Exception:
+    def genfromtxt_feedback():
         genfromtxt_pass = False
-
-    if genfromtxt_pass:
-        genfromtxt_feedback = mo.callout("✅ Correct!", kind="success")
-    else:
-        genfromtxt_feedback = mo.callout("❌ Not quite.", kind="danger")
-
-    genfromtxt_feedback
+        genfromtxt_result = np.array(([[0.   , 0.   , 0.01 ],
+               [1.   , 0.15 , 0.011],
+               [2.   , 0.28 , 0.009],
+               [3.   ,   np.nan, 0.01 ],
+               [4.   , 0.48 , 0.012],
+               [5.   , 0.55 , 0.011]])
+        )
+    
+        try:
+            genfromtxt_pass = np.allclose(
+                kinetics_array(),
+                genfromtxt_result,
+                equal_nan=True
+            )
+            if genfromtxt_pass:
+                return mo.callout("✅ Correct!", kind="success")
+            else:
+                return mo.callout("❌ Not quite.", kind="danger")
+    
+        except Exception as e:
+            return mo.callout(f"❌ Python error: {e}", kind="danger")
+    
+    genfromtxt_feedback()
     return
 
 

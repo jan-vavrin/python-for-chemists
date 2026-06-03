@@ -177,7 +177,6 @@ def _():
     ee = 98
     """
 
-
     return csv_data, json_data, toml_data
 
 
@@ -258,24 +257,26 @@ app._unparsable_cell(
 
 @app.cell(hide_code=True)
 def _(cleanup_screening):
-    cleanup_passed = False
-
-    try:
-        substrates, ees = cleanup_screening()
-        substrates_passed = substrates == {"CC(=O)c1ccccc1", "O=Cc1ccccc1"}
-        ees_passed = ees == [94, 88, 92, 0, 40, 91, 0, 98]
-
-        cleanup_passed = substrates_passed and ees_passed
-
-    except Exception:
+    def cleanup_feedback():
         cleanup_passed = False
+    
+        try:
+            substrates, ees = cleanup_screening()
+            substrates_passed = substrates == {"CC(=O)c1ccccc1", "O=Cc1ccccc1"}
+            ees_passed = ees == [94, 88, 92, 0, 40, 91, 0, 98]
+    
+            cleanup_passed = substrates_passed and ees_passed
+        
+            if cleanup_passed:
+                return mo.callout("✅ Correct!", kind="success")
+            else:
+                return mo.callout("❌ Not quite.", kind="danger")
+    
+        except Exception as e:
+            return mo.callout(f"❌ Python error: {e}", kind="danger")
+    
 
-    if cleanup_passed:
-        cleanup_feedback = mo.callout("✅ Correct!", kind="success")
-    else:
-        cleanup_feedback = mo.callout("❌ Not quite.", kind="danger")
-
-    cleanup_feedback
+    cleanup_feedback()
     return
 
 
