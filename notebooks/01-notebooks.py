@@ -53,7 +53,7 @@ def _():
 
     Large Language Models have changed the way we code in real life, but they do **not** eliminate the need to understand how coding and basic algorithms function – they are great to help you draft a function or troubleshoot your code, but it is crucial for you to learn how to ask the question in the best possible way. Understanding of the underlying principles or syntax rules helps you maximise the potential of new technologies. Additionally, the skill of abstracting a problem to basic components and algorithms in order to approach it is essential throughout science.
 
-    I recommend that for these workshops you do not use LLMs – there are plenty of links to original resources scatter throughout the notebooks to give you some background information about what we cover.
+    I recommend that for these workshops you do not use LLMs – there are plenty of links to original resources scattered throughout the notebooks to give you some background information about what we cover.
     """)
     return
 
