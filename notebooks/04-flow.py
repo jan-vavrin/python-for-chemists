@@ -81,7 +81,7 @@ def _():
     mo.md(r"""
     ## `if` statements
 
-    We use the `if`-`else` statement when we want to conditionally execute different blocks of code. The overall syntax roughly follows simple English sentence structure - note the idents and colons:
+    We use the `if`-`else` statement when we want to conditionally execute different blocks of code. The overall syntax roughly follows simple English sentence structure - note the indents and colons:
 
     ```python
     if CONDITION:
@@ -92,7 +92,7 @@ def _():
         but OTHER_CONDITION is True
 
     else:
-        block to execuite if no condition is True
+        block to execute if no condition is True
     ```
     """)
     return
@@ -358,13 +358,13 @@ app._unparsable_cell(
         # How many times do we need to loop
         n = # COMPLETE HERE
 
-        for i in range(n):
+        for i in range(1,n):
             for j in # COMPLETE HERE
                 # --- YOUR CODE HERE ---
-                # 1. Compare masses[j] and masses[j+1]
+                # 1. Compare mass_list[j] and mass_list[j+1]
                 # 2. If the left one is greater than the right one, swap them
             # Now i last elements mass_list[:-i] should be sorted
-            # Now all of mass_list is sorted
+        # Now all of mass_list is sorted
 
         return mass_list
 
