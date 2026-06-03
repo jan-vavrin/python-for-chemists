@@ -50,7 +50,7 @@ def _():
 
     ## Notebooks and local scripting
 
-    On your own computer, you would ideally know where the files you want to interact with are. As those workshop notebooks live in your browser memory, you need to specify locations exactly (or drop the files into temprary cache in the "Files" tab). The `mo.notebook_location()` function can be used for this here but it is a bit funny with network locations. So we will save files directly in the "current working directory"
+    On your own computer, you would ideally know where the files you want to interact with are. As those workshop notebooks live in your browser memory, you need to specify locations exactly (or drop the files into temporary cache in the "Files" tab). The `mo.notebook_location()` function can be used for this here but it is a bit funny with network locations. So we will save files directly in the "current working directory"
     """)
     return
 
@@ -75,7 +75,7 @@ def _():
     mo.md(r"""
     ### Writing example files
 
-    Let's start by writing some files to local memory. Of course, on your computer you would probably have some files already present! I have created some files (content in the hidden celll below) to use throughout this workshop.
+    Let's start by writing some files to local memory. Of course, on your computer you would probably have some files already present! I have created some files (content in the hidden cell below) to use throughout this workshop.
     """)
     return
 
@@ -331,14 +331,16 @@ def _(catalysts_dict):
     for cas in catalysts_dict:
         print(f"CAS number is: {cas}.")
 
-    print("\n", "-" * 25)
+    print()
+    print("-" * 25)
     print("Iterating over values.")
     print("-" * 25)
 
     for cat_name in catalysts_dict.values():
         print(f"Catalyst is: {cat_name}.")
 
-    print("\n", "-" * 25)
+    print()
+    print("-" * 25)
     print("Iterating over both.")
     print("-" * 25)
 
@@ -407,7 +409,7 @@ def _(catalysts_dict, reaction_json):
 @app.cell(hide_code=True)
 def _():
     mo.md(r"""
-    We can load data from TOML files in the same way. The only difference is that the file needs to be opened in the "binary" format (`mode="rb"). There is no functionality in the standard library to write TOML files yet. But those are very easy to modify by hand, they are more difficult to "break" than JSON files.
+    We can load data from TOML files in the same way. The only difference is that the file needs to be opened in the "binary" format (`mode="rb"`). There is no functionality in the standard library to write TOML files yet. But those are very easy to modify by hand, they are more difficult to "break" than JSON files.
 
     In this example, we load the data from a TOML file. We will now end up with a list called `reactions`, but otherwise it is all equivalent.
     """)
