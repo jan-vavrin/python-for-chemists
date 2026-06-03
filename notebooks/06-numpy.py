@@ -301,7 +301,7 @@ def _():
 
     This gets slightly more complicated than simple list indexing - after all, we are working in multiple dimensions.
 
-    It is trivial in the 1D case, as we can do it the same way we did with lists. Note that the return value here is of the `np.int64()` type - this is slightly different from the built-in Python integer, but we don't need to worry about it.
+    It is trivial in the 1D case, as we can do it the same way we did with lists. Note that the return value here is of the `np.int32` type - this is slightly different from the built-in Python integer, but we don't need to worry about it.
     """)
     return
 
@@ -425,15 +425,15 @@ def _():
     # Array of N floats, between [0,1)
     random_float = rng.random(size=N)
 
-    # Array of N uniformlly-distributed integers between [LOW, HIGH)
+    # Array of N uniformly-distributed integers between [LOW, HIGH)
     random_int = rng.integer(low=LOW, high=HIGH, size=N)
 
-    # Array of N uniformlly-distributed floats between [LOW, HIGH)
+    # Array of N uniformly-distributed floats between [LOW, HIGH)
     random_float2 = rng.uniform(low=LOW, high=HIGH, size=N)
 
-    # Array of N normally-distributed floats between [LOW, HIGH)
-    # Centred at MEAN with std. dev. of WIDTH
-    random_normal = rng.normal(loc=MEAN, scale=WIDTH, size=None)
+    # Array of N normally-distributed floats
+    # centred at MEAN with std. dev. of WIDTH
+    random_normal = rng.normal(loc=MEAN, scale=WIDTH, size=N)
     ```
 
     In the following example we will use the current timestamp (seconds since 00:00:00 UTC on 1st January 1970) - a common way in computing applications. Let's imagine we are trying to simulate noise coming from pixels on a 100x100 CCD detector: that should follow the **Poisson distribution**.
@@ -516,7 +516,7 @@ def _(np):
         rng = np.random.default_rng(seed=42)
         noise = rng.normal(0, 0.03, size=t_data.size)
 
-        # [A] = [A]0 * exp(-kt)
+        # [A] = [A]_0 * exp(-kt)
         abs_data = A0_true * np.exp(-k_true * t_data) + noise
 
         return t_data, abs_data
