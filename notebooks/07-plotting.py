@@ -42,7 +42,7 @@ def _():
     In `matplotlib` we build up the elements on a canvas. We have two major objects to interact with:
 
     - **the figure** (`fig`): this is the canvas; it controls the size, the background,  final export etc.
-    - **the axes**(`ax`): this is the actual drawing area; you can have many axes in one figure (think of subplots) and it controls elements related to the plot itself.
+    - **the axes** (`ax`): this is the actual drawing area; you can have many axes in one figure (think of subplots) and it controls elements related to the plot itself.
     """)
     return
 
@@ -71,7 +71,7 @@ def _():
             label="Points"
         )
 
-        # Draw a fashed line on the axes, in red
+        # Draw a dashed line on the axes, in red
         # Could use data from scipy.optimize here
         ax.plot(
             x,
@@ -92,7 +92,7 @@ def _():
     mo.md(r"""
     ## Adding labels and legends
 
-    This looks already quite good. But a plot without labels is not really "data". Let's look at how we can annotate the plot further.
+    This already looks quite good. But a plot without labels is not really "data". Let's look at how we can annotate the plot further.
 
     > **Note**: in chemistry we often forego the legend and annotate the figure fully in the caption. This could say:
     >
@@ -123,7 +123,7 @@ def _(np, plt):
         ax.plot(
             x, y, 
             color="purple",
-            linewidth="0.7",
+            linewidth=0.7,
             label="Oscillation"
         )
 
@@ -143,7 +143,7 @@ def _():
     mo.md(r"""
     ## LaTeX in labels
 
-    In sciences, we often have comlicated labels in our plots. You can use [LaTeX](https://en.wikipedia.org/wiki/LaTeX) for formatting the labels in `matplotlib`.
+    In sciences, we often have complicated labels in our plots. You can use [LaTeX](https://en.wikipedia.org/wiki/LaTeX) for formatting the labels in `matplotlib`.
     """)
     return
 
@@ -183,7 +183,7 @@ def _(np, plt):
         )
 
         # LaTeX for math/units
-        # Not that we need to use "raw" strings, as LaTeX contains {}
+        # Not that we need to use "raw" strings, as LaTeX contains "\"
         ax.set_xlabel(r"Time, $t$ / min")
         ax.set_ylabel(r"Concentration, $c$ / mol$\cdot$l$^{-1}$")
 
@@ -229,7 +229,7 @@ def _(plt):
 @app.cell(hide_code=True)
 def _():
     mo.md(r"""
-    We can even go all crazy with `subplot_mosaic()` - less common in chemistry, but belowed by some fields like bioinformatics. It takes a text-based map describing our layout. As it gets more and more complicated, you might be better off aligning those plots in a separate graphics editor (like open-source vector editor [Inkscape](https://inkscape.org/)).
+    We can even go all crazy with `subplot_mosaic()` - less common in chemistry, but belowed by some fields like bioinformatics. It takes a text-based map describing our layout. As it gets more and more complicated, you might be better off aligning those plots in a separate graphics editor (like the open-source vector editor [Inkscape](https://inkscape.org/)).
     """)
     return
 
