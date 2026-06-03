@@ -48,7 +48,7 @@ def _(mo):
     mo.md(r"""
     ## Comments
 
-    Throughout this workshop, we Markdown cells to annotate the code. This is useful for building a narrative. But somehow you want to include comments in your code that you do not want Python to read at all. Those are done with a hash symbol.
+    Throughout this workshop, we Markdown cells to annotate the code. This is useful for building a narrative. But sometimes you want to include comments in your code that you do not want Python to read at all. Those are done with a hash symbol.
     """)
     return
 
@@ -69,7 +69,7 @@ def _(mo):
     mo.md(r"""
     ## Assigning variables
 
-    In Python variable assignment is performed with an equal sign. The value on the right is assigned the variable name on the left:
+    In Python variable assignment is performed with an equal sign. The value on the right is assigned to the variable name on the left:
     """)
     return
 
@@ -88,7 +88,7 @@ def _(mo):
     mo.md(r"""
     ## `print()` function
 
-    Just like in mathematics, Python function take their arguments inside the brackets. So to print the value of a variable to the screen, we can simply use `print(variable_name)`.
+    Just like in mathematics, Python functions take their arguments inside the brackets. So to print the value of a variable to the screen, we can simply use `print(variable_name)`.
 
     There are are also some fancy ways to parse the arguments to the print function, most common ones being `f-strings` (where the value of the variable is substituted inside a string) and `r-strings` (where the text is parsed as _raw_, which is useful for scientific instrument outputs containing unusual characters like the backslash `\`).
     """)
@@ -185,7 +185,7 @@ def _(mo):
     mo.md(r"""
     ### Strings
 
-    The other major data type is a strong of characters. We define them using single or double quotes. Mathematical operations are slightly different for them as they result in concatenation.
+    The other major data type is a string of characters. We define them using single or double quotes. Mathematical operations are slightly different for them as they result in concatenation.
     """)
     return
 
@@ -244,7 +244,7 @@ def _(mo):
     mo.md(r"""
     ### Collections
 
-    We often deal with collections of items, not just a single value. Common data types used for that purpse are lists, sets, and tuples. Internally, they can store any data type - and those can be mixed (e.g., you can have a list of numbers and a string "NA" for then a number is missing). You can even created lists of lists, or other objects!
+    We often deal with collections of items, not just a single value. Common data types used for that purpse are lists, sets, and tuples. Internally, they can store any data type - and those can be mixed (e.g., you can have a list of numbers and a string "NA" for then a number is missing). You can even create lists of lists, or other objects!
 
     The main differences are that sets are unordered and do not contain repeat elements. Lists are _mutable_ (can be modified after creation), while tuples are _immutable_ (cannot be changed).
     """)
