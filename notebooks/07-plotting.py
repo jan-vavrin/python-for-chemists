@@ -64,12 +64,16 @@ def _():
 
         # Draw scatter plot on the axes
         # In black with circle markers
-        ax.scatter(
+        ax.plot(
             x, y,
             color="black",
             marker="o",
+            linestyle="none",
             label="Points"
         )
+
+        # The above is equivalent to shorthand notation:
+        # ax.plot(x, y, "ko", label="Points")
 
         # Draw a fashed line on the axes, in red
         # Could use data from scipy.optimize here
@@ -112,18 +116,18 @@ def _(np, plt):
         y = np.sin(x)
         y_scatter = np.sin(x) + rng.normal(loc=0, scale=0.05, size=len(x))
 
-        ax.scatter(
+        ax.plot(
             x,
             y_scatter,
-            color="purple",
-            marker=".",
+            "ro",
+            markersize=1.5,
             label="Raw data"
         )
 
         ax.plot(
             x, y, 
             color="purple",
-            linewidth="0.7",
+            linewidth="1",
             label="Oscillation"
         )
 
@@ -211,6 +215,10 @@ def _(plt):
         # Create 1 row and 2 columns
         # 'axes' is now a list containing two frames: axes[0] and axes[1]
         fig, axes = plt.subplots(1, 2, figsize=(10, 4))
+
+        # You can also explicitly name those axes
+        # (see examples in the final workshop)
+        # fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10,4))
 
         # Left Frame
         axes[0].set_title("Plot A")
