@@ -131,14 +131,14 @@ def _(body_temp, from_celsius1, gibbs):
         try:
             test_c = from_celsius1(body_temp) == 309.75
             test_g = abs(gibbs(10, 18) - (-5574.00)) < 1.0
-    
+
             passed = test_c and test_g
-    
+
             if passed:
                 return mo.callout("✅ Correct", kind="success")
             else:
                 return mo.callout("❌ Not quite.", kind="danger")   
-    
+
         except Exception as e:
             passed = False
             return mo.callout(f"❌ Python error: {e}.", kind="danger")
@@ -313,6 +313,97 @@ def _():
     mo.md(r"""
     While it might feel completely unnecessary, starting your function definition with docstrings and explicit types, helps you structure your thoughts and makes coding much easier down the line.
     """)
+    return
+
+
+@app.cell(hide_code=True)
+def _():
+    mo.md(r"""
+    ## Lambda functions
+
+    This is another **more advanced topic** that you might want to ignore when learning the basics. A lambda function is a small, anonymous (unnamed), one-line function.
+
+    The syntax for lambda functions is rather implicit:
+
+    ```python
+    lambda arguments: expression
+    ```
+    """)
+    return
+
+
+@app.cell
+def _():
+    to_kelvin_lab = lambda c: c + 273.15
+    print(to_kelvin_lab(25))
+    return
+
+
+@app.cell(hide_code=True)
+def _():
+    mo.md(r"""
+    Lambda functions are useful when defining short one-line functions, most commonly as arguments to another function. The most common example is sorting functions. Most function that perform some sorting operation (e.g., `sort()` or `min()`) take an optional `key` argument, which is the function defining the comparison operator.
+
+    Imagine we store solvent information as a tuple: `(name, boiling_point, density)` and want to sort by the value of the `boiling_point` or `density`:
+    """)
+    return
+
+
+@app.cell
+def _():
+    _solvents = [("Ethanol", 78, 0.789), ("Water", 100, 1.000), ("Chloroform", 61, 1.483)]
+
+    print(f"Sorted by boiling point: {sorted(_solvents, key=lambda x: x[1])}")
+
+    def max_density(solvents):
+        pass
+        # FIXME: Use max() with lambda function key to return solvent of max density
+
+    try: 
+        print(f"Maximum density solvent is: {max_density(_solvents)[0].lower()}.")
+
+    except Exception as e:
+        print(f"Python error: {e}.")
+    return
+
+
+@app.cell(hide_code=True)
+def _():
+    mo.md(r"""
+    This is yet another place where `dataclass` becomes a very useful structure, as it adds further semantics to your lambda functions.
+    """)
+    return
+
+
+app._unparsable_cell(
+    r"""
+    from dataclasses import dataclass
+
+    @dataclass
+    class Solvent:
+        name : str
+        boiling_point : float
+        density : float
+
+    _solvents = [
+        Solvent("ethanol", 78, 0.789),
+        Solvent("water", 100, 1.000),
+        Solvent("chloroform", 61, 1.483)
+    ]
+
+    print(
+        "Solvent with highest density is: ",
+        f"{max(
+            _solvents, key=lambda x: # FIXME: identify the comparison element
+        )}."
+    )
+    """,
+    name="_"
+)
+
+
+@app.cell
+def _():
     return
 
 

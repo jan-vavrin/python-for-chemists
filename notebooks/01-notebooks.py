@@ -21,6 +21,8 @@ def _():
 
     Python notebooks are basically your interactive coding documents. While we don't always use them in research (we tend to favour standalone scripts for reproducibility), they are really useful for data processing and explorations. The notebooks for the workshops run in your browser - so **make suret to save all relevant files** to your computer before shutting it down!
 
+    > **Note**: the earlier notebooks are a bit more read-through, but the level of engagement and your contribute will increase non-linearly. If you are already familiar with Python, there should be some more advanced examples and concepts as we go, so make sure to at least quickly go through all the workshops!
+
     ## Types of cells
 
     They can be a mix of _Python cells_ and _Markdown cells_. Python cells contain code that can be run inside the notebook with any output of the code (values, text, plots) appearing directly below.
@@ -45,7 +47,7 @@ def _():
 
     You can see that Python notebooks can be quite useful to present your results. You can generate plots from your data directly with Python cells and then provide some discussion in the following Markdown cell. The beauty of that is that you can easily reuse your code and don't need to keep pasting plots from Excel!
 
-    ## Explore
+    ## Explore and interact
 
     To see the Markdown code used to generate this cell, click on the three dots and select "Show code" (or click `Ctrl + H` with the cell highligted). You can also double-click on the text. To add a new cell, click on the small `+` signes to the left. To execute and move to the next cell, press `Shift + Enter`.
 
