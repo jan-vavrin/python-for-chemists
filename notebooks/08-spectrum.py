@@ -264,9 +264,9 @@ def _(curve_fit, load_data):
 
     def fit_gaussian():
         p0 = [] # FIXME: add initial guess for the parameters
-    
+
         wavelength, intensity = load_data("signal.txt")
-    
+
         p_opt, p_cov = curve_fit() # FIXME: call curve_fit() with correct arguments
 
         return p_opt, p_cov
@@ -349,7 +349,7 @@ app._unparsable_cell(
 
         # Useful method to set limits based on values
         # Rather than slicing the original arrays with indices
-        ax1.set_xlim([620, 655])
+        ax1.set_xlim(620, 655)
 
         ax2.plot() # FIXME: plot residuals
 
