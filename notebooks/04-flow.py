@@ -167,11 +167,11 @@ app._unparsable_cell(
     ) -> str:
         \"\"\"Check if there is Fe or Co in the formula.\"\"\"
         if # COMPLETE HERE
-            return \"Cobalt is in Prussian blue.\"
+            return f\"Cobalt is in {formula}.\"
         elif # COMPLETE HERE
-            return \"Iron is in Prussian blue.\"
+            return f\"Iron is in {formula}.\"
         else:
-            return \"None are in Prussian blue.\"
+            return f\"None are in {formula}.\"
     """,
     name="_"
 )
@@ -181,7 +181,7 @@ app._unparsable_cell(
 def _(check_blue, prussian_blue):
     def str_check_pass():
         exercise_1_passed = False
-    
+
         try:
             exercise_1_passed = check_blue(prussian_blue) == "Iron is in Prussian blue."
 
@@ -189,7 +189,7 @@ def _(check_blue, prussian_blue):
                 return mo.callout("✅ Correct!", kind="success")
             else:
                 return mo.callout("❌ Not quite.", kind="danger")
-    
+
         except Exception as e:
             return mo.callout(f"❌ Python error: {e}", kind="danger")
 
@@ -224,7 +224,7 @@ def _():
 @app.cell(hide_code=True)
 def _():
     mo.md(r"""
-    It is very common to want to keep track of which iteration of the loop we are going through. For example, imagine that for some reason we want to raise numbers to the powers that correspond to their position in a sequence.
+    It is very common to want to keep track of which iteration of the loop we are going through. For example, imagine that for some reason we want to raise numbers to the powers that correspond to their position in a sequence. The `enumerate()` function is used for that and it returns a tuple `(counter, element)`, where the `counter` starts from 0.
     """)
     return
 
@@ -244,6 +244,8 @@ def _():
     ### Ranges
 
     A useful sequence to iterate over is a range of integers, we can do it with the `range()` function. Maybe we want to know how much $^{235}$U is left aftert six half-lives?
+
+    > **Note**: in Python we can update the value of a variable in one line, e.g., `x = x + 1` (or even shorter `x += 1`) will increment `x` by 1.
     """)
     return
 
@@ -293,10 +295,10 @@ def _(uranium_left, uranium_sample):
                 return mo.callout("✅ Correct!", kind="success")
             else:
                 return mo.callout("❌ Not quite.", kind="danger")
-    
+
         except Exception as e:
             return mo.callout(f"❌ Python error: {e}", kind="danger")
-    
+
     uranium_pass()
     return
 
@@ -345,6 +347,8 @@ def _():
             ELSE:
                 Leave them alone and move to the next pair
     ```
+
+    > **Note**: here, we make use of the loop counters `i` and `j`; it is common in Python to just want to repeat some code `N` times without using the variable, in which case we can just "ignore" the loop counter and use `for _ in range(N)`.
     """)
     return
 
@@ -380,14 +384,14 @@ def _(masses):
     def sort_feedback():
         expected = [4.0026, 20.18, 39.948, 83.798, 131.293]
         sort_passed = False
-    
+
         try:
             sort_passed = (masses == expected)
             if sort_passed:
                 return mo.callout("✅ Correct! The noble gases are now ordered by mass.", kind="success")
             else:
                 return mo.callout("❌ Not quite.", kind="danger")
-    
+
         except Exception as e:
             return mo.callout(f"❌ Python error: {e}", kind="danger")
 
