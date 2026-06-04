@@ -216,6 +216,20 @@ def _():
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
+    We can introduce strings with single or double quotes. This is particularly useful if we have quotes inside the string:
+    """)
+    return
+
+
+@app.cell
+def _():
+    nickname = "Elias 'EJ' Corey"
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
     #### String methods and formatting
 
     You can do a lot of cool processing to the text with Python functions. Here are some examples for now - more about [methods](https://www.w3schools.com/python/python_ref_string.asp) and [formatting](https://www.w3schools.com/python/ref_string_format.asp) can be found online.
@@ -524,17 +538,17 @@ def _(mo):
 def _(diff_x, diff_y, diff_z, sqrt):
     class Point:
         """Represents a point in 3D space.
-    
+
         Attributes
         ----------
         x, y, z : float
             Coordinates in the 3D space.
-        
+
         Methods
         -------
         distance_from(point)
             Returns Euclidean distance from another point.
-    
+
         """
         def __init__(
             self,
@@ -550,13 +564,13 @@ def _(diff_x, diff_y, diff_z, sqrt):
             self
         ):
             return f"Point(x={self.x}, y={self.y}, z={self.z})"
-        
+
         def distance_from(
             self,
             point : Point
         ):
             # FIXME: Define local variables for diff_x/y/z
-    
+
             return sqrt(diff_x ** 2 + diff_y ** 2 + diff_z ** 2)
 
     _point1 = Point(x=1, y=1, z=1)
@@ -587,7 +601,7 @@ def _(Point, mo):
             return mo.callout(f"❌ Python error: {e}.", kind="danger")
 
     check_point()
-        
+
     return
 
 
