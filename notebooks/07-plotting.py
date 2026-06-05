@@ -100,7 +100,7 @@ def _():
 
     > **Note**: in chemistry we often forego the legend and annotate the figure fully in the caption. This could say:
     >
-    > **Figure 1.** Response of the detector, showing raw data (palatinate dots) and the resulting sinusoidal fit (palatinate line).
+    > **Figure 1.** Response of the detector, showing raw data (red dots) and the resulting sinusoidal fit (palatinate line).
     """)
     return
 
@@ -403,6 +403,8 @@ def _(cycler, palettes):
             "ytick.major.size": 15,
             "xtick.major.width": 5.0,
             "ytick.major.width": 5.0,
+            "xtick.major.pad": 10.0,
+            "ytick.major.pad": 10.0,
             "xtick.top": False,               
             "ytick.right": False,
             "axes.linewidth": 0.5,
