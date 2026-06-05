@@ -275,7 +275,7 @@ def _(kinetics_array, np):
                [4.   , 0.48 , 0.012],
                [5.   , 0.55 , 0.011]])
         )
-    
+
         try:
             genfromtxt_pass = np.allclose(
                 kinetics_array(),
@@ -286,10 +286,10 @@ def _(kinetics_array, np):
                 return mo.callout("✅ Correct!", kind="success")
             else:
                 return mo.callout("❌ Not quite.", kind="danger")
-    
+
         except Exception as e:
             return mo.callout(f"❌ Python error: {e}", kind="danger")
-    
+
     genfromtxt_feedback()
     return
 
@@ -366,6 +366,14 @@ def _(array_2D):
 def _(array_2D):
     # Elements idx 1, 2, 3 of row idx 2.
     array_2D[2, 1:4]
+    return
+
+
+@app.cell(hide_code=True)
+def _():
+    mo.md(r"""
+    This is probably the most useful application of slicing: **getting an entire row or a column**!
+    """)
     return
 
 
@@ -542,7 +550,7 @@ def _(example_kinetics_data, np, time_data):
         example_kinetics_data # from previous cell (with noise)
     )
 
-    print(f"Calculated Rate Constant (k): {popt[1]:.4f}")
+    print(f"Calculated Rate Constant (k): {popt[1]:.4f} ± {np.sqrt(pcov[1,1]):.4f}.")
     return (popt,)
 
 

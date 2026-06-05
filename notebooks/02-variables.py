@@ -216,6 +216,20 @@ def _():
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
+    We can introduce strings with single or double quotes. This is particularly useful if we have quotes inside the string:
+    """)
+    return
+
+
+@app.cell
+def _():
+    nickname = "Elias 'EJ' Corey"
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
     #### String methods and formatting
 
     You can do a lot of cool processing to the text with Python functions. Here are some examples for now - more about [methods](https://www.w3schools.com/python/python_ref_string.asp) and [formatting](https://www.w3schools.com/python/ref_string_format.asp) can be found online.
@@ -414,8 +428,8 @@ def _(mo):
     return
 
 
-@app.cell
-def _():
+app._unparsable_cell(
+    r"""
     # Coordinates of point 1, as x y z
     coords1 = [1, 1, 1]
 
@@ -424,9 +438,11 @@ def _():
 
     # Difference (pairwise)
     dx = coords1[0] - coords2[0]
-    dy = coords1[0] - coords2[0]
-    dz = coords1[0] - coords2[0]
-    return dx, dy, dz
+    dy = # FIXME
+    dz = # FIXME
+    """,
+    name="_"
+)
 
 
 @app.cell
@@ -463,7 +479,183 @@ def _(dx, dy, dz):
 
     distance2 = sqrt(dx ** 2 + dy ** 2 + dz ** 2)
     print(f"Distance is {distance2:.2f}.")
+    return (sqrt,)
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    ## Classes (more advanced)
+
+    This is a **more advanced topic** that you might want to skip on your first exposure to Python.
+
+    You can see above that we defined two separate variables for each point and calculated the difference between them with another set of variables. What if we had 1,000 different points? We can create a [`class`](https://docs.python.org/3/tutorial/classes.html) that contains all the information about the points (_attributes_) and some useful functions (_methods_) related to them. We will learn more about functions in the next section, but let's consider this example:
+    """)
     return
+
+
+@app.class_definition
+class PointExample:
+    def __init__(
+        self,
+        x: float,
+        y: float,
+        z: float,
+    ):
+        self.x = x 
+        self.y = y
+        self.z = z
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    > **Note**: so called "magic methods" in Python start with two underscores (e.g., `__init__`). They preform some special functions related to the inner working of the programming language; in this case, `__init__` initialises an instance of the class.
+
+    Where `self` is the conventional name for the first parameter, which corresponds to the instance of the class _itself_. We can can create points consistently as _instances_ of class `Point` and access them usign the familiar "dot" notation:
+    """)
+    return
+
+
+@app.cell
+def _():
+    _point1 = PointExample(1, 1, 1)
+    _point2 = PointExample(3, 4, 5)
+
+    print(f"Point(x={_point2.x}, y={_point2.y}, z={_point2.z})")
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    but the main strength comes from then isolating relevant methods together. Try writing a method that returns the distance between two points for this new complete class representing a `Point`.
+    """)
+    return
+
+
+@app.cell
+def _(diff_x, diff_y, diff_z, sqrt):
+    class Point:
+        """Represents a point in 3D space.
+
+        Attributes
+        ----------
+        x, y, z : float
+            Coordinates in the 3D space.
+
+        Methods
+        -------
+        distance_from(point)
+            Returns Euclidean distance from another point.
+
+        """
+        def __init__(
+            self,
+            x: float,
+            y: float,
+            z: float,
+        ):
+            self.x = x 
+            self.y = y
+            self.z = z
+
+        def __str__(
+            self
+        ):
+            return f"Point(x={self.x}, y={self.y}, z={self.z})"
+
+        def distance_from(
+            self,
+            point : Point
+        ):
+            # FIXME: Define local variables for diff_x/y/z
+
+            return sqrt(diff_x ** 2 + diff_y ** 2 + diff_z ** 2)
+
+    _point1 = Point(x=1, y=1, z=1)
+    _point2 = Point(3, 4, 5)
+
+    _point1.distance_from(_point2)
+    return (Point,)
+
+
+@app.cell
+def _(Point, mo):
+    import numpy as np
+
+    def check_point():
+        _point1 = Point(1, 1, 1)
+        _point2 = Point(3, 4, 5)
+
+        try:
+            passed = np.isclose(_point1.distance_from(_point2), 5.39, atol=0.01)
+
+            if passed:
+                return mo.callout("✅ Correct", kind="success")
+            else:
+                return mo.callout("❌ Not quite.", kind="danger")  
+
+        except Exception as e:
+            passed = False
+            return mo.callout(f"❌ Python error: {e}.", kind="danger")
+
+    check_point()
+
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    It is often useful to define some more magic methods, such as `__str__` or `__repr__` – those are used when you try to print the object as a string. Compare the output of those two commands:
+    """)
+    return
+
+
+@app.cell
+def _(Point):
+    print(f"Class for which we defined __str__: {Point(1,1,1)}")
+    print(f"Class for which we didn't: {PointExample(1,1,1)}")
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    ### Dataclasses
+
+    There are some types of classes that we use very often in software development. One such example are classes that are designed solely to store data – we could do it in dictionaries (see later), but we perhaps a better interface is provided by the special `dataclass` class. Benefit of using classes like this is that many default methods are already defined in a practical way.
+
+    To define a [dataclass](https://docs.python.org/3/library/dataclasses.html), we use the `@dataclass` [_decorator_](https://www.w3schools.com/python/python_decorators.asp):
+
+    ```python
+    from dataclasses import dataclass
+
+    @dataclass
+    class ExampleDataclass:
+        some_field : data_type
+        other_field : data_type
+    ```
+
+    we can then define methods within the class, use some built-in ones, and keep our code well compartmentalised.
+
+    Try writing a data class that stores basic information about reaction conditions in the lab notebook.
+    """)
+    return
+
+
+app._unparsable_cell(
+    r"""
+    from dataclasses import dataclass
+
+    @dataclass
+    class Reaction:
+        # FIXME: write a class that stores solvent (string), 
+        # and temperature (float), time (integer)
+    """,
+    name="_"
+)
 
 
 if __name__ == "__main__":

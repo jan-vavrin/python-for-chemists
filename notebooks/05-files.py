@@ -75,7 +75,10 @@ def _():
     mo.md(r"""
     ### Writing example files
 
+
     Let's start by writing some files to local memory. Of course, on your computer you would probably have some files already present! I have created some files (content in the hidden cell below) to use throughout this workshop.
+
+    > **Note**: after you have executed the cells below, click on the little "refresh" button in the files view on the left so that they appear there (and you can preview them).
     """)
     return
 
@@ -176,7 +179,6 @@ def _():
     Yield = 55
     ee = 98
     """
-
     return csv_data, json_data, toml_data
 
 
@@ -232,6 +234,7 @@ app._unparsable_cell(
                     # COMPLETE HERE
                 else:
                     # Identify the SMILES string in the line
+                    # You might want to use the string.split() function
                     smiles = # COMPLETE HERE
                     # Add the SMILES to a set: set.add()
                     substrates.add(smiles)
@@ -259,22 +262,22 @@ app._unparsable_cell(
 def _(cleanup_screening):
     def cleanup_feedback():
         cleanup_passed = False
-    
+
         try:
             substrates, ees = cleanup_screening()
             substrates_passed = substrates == {"CC(=O)c1ccccc1", "O=Cc1ccccc1"}
             ees_passed = ees == [94, 88, 92, 0, 40, 91, 0, 98]
-    
+
             cleanup_passed = substrates_passed and ees_passed
-        
+
             if cleanup_passed:
                 return mo.callout("✅ Correct!", kind="success")
             else:
                 return mo.callout("❌ Not quite.", kind="danger")
-    
+
         except Exception as e:
             return mo.callout(f"❌ Python error: {e}", kind="danger")
-    
+
 
     cleanup_feedback()
     return

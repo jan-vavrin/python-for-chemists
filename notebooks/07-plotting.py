@@ -64,14 +64,18 @@ def _():
 
         # Draw scatter plot on the axes
         # In black with circle markers
-        ax.scatter(
+        ax.plot(
             x, y,
             color="black",
             marker="o",
+            linestyle="none",
             label="Points"
         )
 
         # Draw a dashed line on the axes, in red
+        # The above is equivalent to shorthand notation:
+        # ax.plot(x, y, "ko", label="Points")
+
         # Could use data from scipy.optimize here
         ax.plot(
             x,
@@ -96,7 +100,7 @@ def _():
 
     > **Note**: in chemistry we often forego the legend and annotate the figure fully in the caption. This could say:
     >
-    > **Figure 1.** Response of the detector, showing raw data (palatinate dots) and the resulting sinusoidal fit (palatinate line).
+    > **Figure 1.** Response of the detector, showing raw data (red dots) and the resulting sinusoidal fit (palatinate line).
     """)
     return
 
@@ -112,18 +116,18 @@ def _(np, plt):
         y = np.sin(x)
         y_scatter = np.sin(x) + rng.normal(loc=0, scale=0.05, size=len(x))
 
-        ax.scatter(
+        ax.plot(
             x,
             y_scatter,
-            color="purple",
-            marker=".",
+            "ro",
+            markersize=1.5,
             label="Raw data"
         )
 
         ax.plot(
             x, y, 
             color="purple",
-            linewidth=0.7,
+            linewidth=1.0,
             label="Oscillation"
         )
 
@@ -211,6 +215,10 @@ def _(plt):
         # Create 1 row and 2 columns
         # 'axes' is now a list containing two frames: axes[0] and axes[1]
         fig, axes = plt.subplots(1, 2, figsize=(10, 4))
+
+        # You can also explicitly name those axes
+        # (see examples in the final workshop)
+        # fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10,4))
 
         # Left Frame
         axes[0].set_title("Plot A")
@@ -395,6 +403,8 @@ def _(cycler, palettes):
             "ytick.major.size": 15,
             "xtick.major.width": 5.0,
             "ytick.major.width": 5.0,
+            "xtick.major.pad": 10.0,
+            "ytick.major.pad": 10.0,
             "xtick.top": False,               
             "ytick.right": False,
             "axes.linewidth": 0.5,
